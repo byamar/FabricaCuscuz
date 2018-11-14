@@ -17,6 +17,17 @@ public class Produto extends Fabrica{
     private String quantidade;
     private String descricao;
     private boolean disponivel;
+    private int ID;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    
+    
 
     public String getNome() {
         return nome;

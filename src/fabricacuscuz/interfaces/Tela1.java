@@ -39,6 +39,8 @@ public class Tela1 extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(680, 550));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botaoComecar.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
@@ -76,17 +78,21 @@ public class Tela1 extends javax.swing.JFrame {
         getContentPane().add(botaoSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 40, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cuscuzz.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 670, 550));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 550));
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoComecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoComecarActionPerformed
        if(txtUsuario.getText().equals("jaba") && Senha.getText().equals("jaba")){
           TelaPrincipal tela = new TelaPrincipal();
         tela.setVisible(true);
-        dispose();   
+        dispose();
+       }else if(txtUsuario.getText().equals("") | Senha.getText().equals("")){
+           JOptionPane.showMessageDialog(null, "Por favor preencha os campos!");
+           
        }else{
            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos! ");
        }

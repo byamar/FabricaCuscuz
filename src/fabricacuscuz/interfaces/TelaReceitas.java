@@ -29,10 +29,12 @@ public class TelaReceitas extends javax.swing.JFrame {
 
         botaoacessar1 = new javax.swing.JButton();
         botaoacessar2 = new javax.swing.JButton();
+        botaoSair = new javax.swing.JButton();
         labelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         botaoacessar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -50,19 +52,35 @@ public class TelaReceitas extends javax.swing.JFrame {
         getContentPane().add(botaoacessar2);
         botaoacessar2.setBounds(580, 310, 120, 30);
 
+        botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/exit.png"))); // NOI18N
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botaoSair);
+        botaoSair.setBounds(720, 30, 40, 40);
+
         labelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/telareceitas.jpg"))); // NOI18N
         labelFundo.setMaximumSize(new java.awt.Dimension(999, 600));
         getContentPane().add(labelFundo);
         labelFundo.setBounds(0, -10, 800, 620);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoacessar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoacessar1ActionPerformed
-        ReceitaCuscuzNordestino tela = new ReceitaCuscuzNordestino();
+        cuscuznordestino tela = new cuscuznordestino();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_botaoacessar1ActionPerformed
+
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+        TelaPrincipal tela = new TelaPrincipal();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botaoSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,6 +118,7 @@ public class TelaReceitas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoSair;
     private javax.swing.JButton botaoacessar1;
     private javax.swing.JButton botaoacessar2;
     private javax.swing.JLabel labelFundo;

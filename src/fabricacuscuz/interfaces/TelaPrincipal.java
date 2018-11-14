@@ -1,12 +1,14 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To chang this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
 package fabricacuscuz.interfaces;
 
 import fabricacuscuz.UIFabrica;
+import java.util.ArrayList;
+import fabricacuscuz.Produto;
 
 /**
  *
@@ -14,6 +16,9 @@ import fabricacuscuz.UIFabrica;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
     UIFabrica fabrica = new UIFabrica();
+    ArrayList<Produto> produtos = new ArrayList();
+    
+
 
     /** Creates new form TelaPrincipal */
     public TelaPrincipal() {
@@ -39,12 +44,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuCadastro = new javax.swing.JMenu();
         ItemCproduto = new javax.swing.JMenuItem();
         MenuEstoque = new javax.swing.JMenu();
+        itemTodosProdutos = new javax.swing.JRadioButtonMenuItem();
+        itemProdutosDisponiveis = new javax.swing.JRadioButtonMenuItem();
         MenuFerramentas = new javax.swing.JMenu();
         itemReceitas = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
         itemSairtudo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         InternalTela.setTitle("Bem vindo");
@@ -96,6 +104,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(MenuCadastro);
 
         MenuEstoque.setText("Estoque");
+
+        itemTodosProdutos.setSelected(true);
+        itemTodosProdutos.setText("Todos Produtos");
+        itemTodosProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemTodosProdutosActionPerformed(evt);
+            }
+        });
+        MenuEstoque.add(itemTodosProdutos);
+
+        itemProdutosDisponiveis.setSelected(true);
+        itemProdutosDisponiveis.setText("Produtos Disponiveis");
+        itemProdutosDisponiveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProdutosDisponiveisActionPerformed(evt);
+            }
+        });
+        MenuEstoque.add(itemProdutosDisponiveis);
+
         jMenuBar1.add(MenuEstoque);
 
         MenuFerramentas.setText("Ferramentas");
@@ -125,6 +152,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ItemCprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCprodutoActionPerformed
@@ -134,7 +162,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ItemCprodutoActionPerformed
 
     private void BotaoSairTelaInternalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSairTelaInternalActionPerformed
-        
+        System.exit(0);
     }//GEN-LAST:event_BotaoSairTelaInternalActionPerformed
 
     private void itemReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReceitasActionPerformed
@@ -146,6 +174,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void itemSairtudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSairtudoActionPerformed
         dispose();
     }//GEN-LAST:event_itemSairtudoActionPerformed
+
+    private void itemTodosProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTodosProdutosActionPerformed
+       for(Produto produto: produtos){
+           System.out.println(produtos);
+       }
+    }//GEN-LAST:event_itemTodosProdutosActionPerformed
+
+    private void itemProdutosDisponiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProdutosDisponiveisActionPerformed
+        for(Produto produto: produtos){
+            if(produto.isDisponivel()){
+            System.out.println(produto.getNome());
+            }
+        }
+    }//GEN-LAST:event_itemProdutosDisponiveisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,8 +231,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuCadastro;
     private javax.swing.JMenu MenuEstoque;
     private javax.swing.JMenu MenuFerramentas;
+    private javax.swing.JRadioButtonMenuItem itemProdutosDisponiveis;
     private javax.swing.JMenuItem itemReceitas;
     private javax.swing.JMenuItem itemSairtudo;
+    private javax.swing.JRadioButtonMenuItem itemTodosProdutos;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

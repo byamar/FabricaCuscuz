@@ -9,6 +9,7 @@ import fabricacuscuz.Fabrica;
 import fabricacuscuz.Produto;
 import fabricacuscuz.UIFabrica;
 
+
 /**
  *
  * @author Beatriz
@@ -40,10 +41,12 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoCadastrarP = new javax.swing.JButton();
         botaoSairTelaC = new javax.swing.JButton();
         labelConcluido = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         txtPreco.addActionListener(new java.awt.event.ActionListener() {
@@ -100,14 +103,18 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoSairTelaC.setBounds(690, 20, 40, 40);
 
         labelConcluido.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        labelConcluido.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(labelConcluido);
         labelConcluido.setBounds(120, 480, 270, 50);
+        getContentPane().add(txtID);
+        txtID.setBounds(110, 200, 180, 30);
 
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto.jpg"))); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto_1.jpg"))); // NOI18N
         getContentPane().add(fundo);
-        fundo.setBounds(0, 0, 787, 580);
+        fundo.setBounds(-10, 0, 787, 580);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -131,19 +138,22 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void botaoCadastrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarPActionPerformed
+
         Produto produto = new Produto();
-        
-        
+         
+   
         produto.setNome(txtNome.getText());
-        
-        
+   
         produto.setDescricao(txtDescricao.getText());
         
         produto.setPreco(txtPreco.getText());
       
         produto.setQuantidade(txtQuantidade.getText());
+        produto.adicionarProduto(produto);
+                
         
         labelConcluido.setText("Cadastro Concluído!");
+         
     }//GEN-LAST:event_botaoCadastrarPActionPerformed
 
     private void botaoSairTelaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairTelaCActionPerformed
@@ -196,6 +206,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
     private javax.swing.JLabel fundo;
     private javax.swing.JLabel labelConcluido;
     private javax.swing.JTextField txtDescricao;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQuantidade;

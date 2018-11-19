@@ -5,9 +5,7 @@
  */
 package fabricacuscuz.interfaces;
 
-import fabricacuscuz.Fabrica;
-import fabricacuscuz.Produto;
-import fabricacuscuz.UIFabrica;
+
 
 
 /**
@@ -15,8 +13,7 @@ import fabricacuscuz.UIFabrica;
  * @author Beatriz
  */
 public class telaCadastrarProduto extends javax.swing.JFrame {
-    UIFabrica fabrica = new UIFabrica();
-    Fabrica fabricaa = new Fabrica();
+   
 
     /**
      * Creates new form telaCadastrarProduto
@@ -139,17 +136,6 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
 
     private void botaoCadastrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarPActionPerformed
 
-        Produto produto = new Produto();
-         
-   
-        produto.setNome(txtNome.getText());
-   
-        produto.setDescricao(txtDescricao.getText());
-        
-        produto.setPreco(txtPreco.getText());
-      
-        produto.setQuantidade(txtQuantidade.getText());
-        produto.adicionarProduto(produto);
                 
         
         labelConcluido.setText("Cadastro Concluído!");

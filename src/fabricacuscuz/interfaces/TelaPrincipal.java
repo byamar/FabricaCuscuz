@@ -6,17 +6,14 @@
 
 package fabricacuscuz.interfaces;
 
-import fabricacuscuz.UIFabrica;
-import java.util.ArrayList;
-import fabricacuscuz.Produto;
+
 
 /**
  *
  * @author Beatriz
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-    UIFabrica fabrica = new UIFabrica();
-    ArrayList<Produto> produtos = new ArrayList();
+    
     
 
 
@@ -176,17 +173,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemSairtudoActionPerformed
 
     private void itemTodosProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTodosProdutosActionPerformed
-       for(Produto produto: produtos){
-           System.out.println(produtos);
-       }
+       
     }//GEN-LAST:event_itemTodosProdutosActionPerformed
 
     private void itemProdutosDisponiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProdutosDisponiveisActionPerformed
-        for(Produto produto: produtos){
-            if(produto.isDisponivel()){
-            System.out.println(produto.getNome());
-            }
-        }
+        
     }//GEN-LAST:event_itemProdutosDisponiveisActionPerformed
 
     /**

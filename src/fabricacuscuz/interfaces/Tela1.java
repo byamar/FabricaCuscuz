@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package fabricacuscuz.interfaces;
-import fabricacuscuz.UIFabrica;
+
 import javax.swing.JOptionPane;
 
 /**

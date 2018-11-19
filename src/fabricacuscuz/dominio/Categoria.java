@@ -3,15 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fabricacuscuz;
+package fabricacuscuz.dominio;
 
 /**
  *
  * @author Beatriz
  */
-public class Ingrediente {
+public class Categoria {
+    private int id;
     private String nome;
-    private boolean disponivel;
+    private String descricao;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -21,13 +30,14 @@ public class Ingrediente {
         this.nome = nome;
     }
 
-    public boolean isDisponivel() {
-        return disponivel;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
-
-   
+    
+    
+    
 }

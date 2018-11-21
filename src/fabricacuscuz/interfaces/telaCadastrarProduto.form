@@ -94,7 +94,7 @@
     <Component class="javax.swing.JButton" name="botaoSairTelaC">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/fabricacuscuz/imagens/exit.png"/>
+          <Image iconType="3" name="/fabricacuscuz/imagens/icon (1).png"/>
         </Property>
       </Properties>
       <Events>
@@ -124,7 +124,7 @@
     <Component class="javax.swing.JTextField" name="txtID">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="110" y="200" width="180" height="30"/>
+          <AbsoluteConstraints x="110" y="200" width="100" height="30"/>
         </Constraint>
       </Constraints>
     </Component>

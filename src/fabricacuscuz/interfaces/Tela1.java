@@ -69,7 +69,7 @@ public class Tela1 extends javax.swing.JFrame {
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 170, 30));
         getContentPane().add(Senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 170, 30));
 
-        botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/exit.png"))); // NOI18N
+        botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
         botaoSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSairActionPerformed(evt);

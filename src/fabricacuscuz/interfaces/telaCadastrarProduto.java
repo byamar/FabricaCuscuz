@@ -90,7 +90,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         getContentPane().add(botaoCadastrarP);
         botaoCadastrarP.setBounds(560, 480, 150, 60);
 
-        botaoSairTelaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/exit.png"))); // NOI18N
+        botaoSairTelaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
         botaoSairTelaC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSairTelaCActionPerformed(evt);
@@ -104,7 +104,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         getContentPane().add(labelConcluido);
         labelConcluido.setBounds(120, 480, 270, 50);
         getContentPane().add(txtID);
-        txtID.setBounds(110, 200, 180, 30);
+        txtID.setBounds(110, 200, 100, 30);
 
         fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto_1.jpg"))); // NOI18N
         getContentPane().add(fundo);
@@ -135,7 +135,10 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void botaoCadastrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarPActionPerformed
-
+        int contador = 0;
+        contador++;
+            txtID.setText("" + contador);
+        
                 
         
         labelConcluido.setText("Cadastro Concluído!");

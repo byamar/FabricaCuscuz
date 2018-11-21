@@ -52,7 +52,7 @@ public class TelaReceitas extends javax.swing.JFrame {
         getContentPane().add(botaoacessar2);
         botaoacessar2.setBounds(580, 310, 120, 30);
 
-        botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/exit.png"))); // NOI18N
+        botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
         botaoSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSairActionPerformed(evt);

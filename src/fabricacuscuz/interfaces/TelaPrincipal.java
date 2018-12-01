@@ -35,7 +35,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         labelFundoo = new javax.swing.JLabel();
         BotaoSairTelaInternal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTProdutos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuCadastro = new javax.swing.JMenu();
@@ -45,6 +45,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         itemProdutosDisponiveis = new javax.swing.JRadioButtonMenuItem();
         MenuFerramentas = new javax.swing.JMenu();
         itemReceitas = new javax.swing.JMenuItem();
+        itemRealizarCompras = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
         itemSairtudo = new javax.swing.JMenuItem();
 
@@ -67,22 +68,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         InternalTela.getContentPane().add(BotaoSairTelaInternal, java.awt.BorderLayout.PAGE_END);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Descrição", "Preço", "Quantidade"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTProdutos);
 
         InternalTela.getContentPane().add(jScrollPane1, java.awt.BorderLayout.PAGE_START);
 
-        getContentPane().add(InternalTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 490, 260));
+        getContentPane().add(InternalTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 490, 260));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/fundo-de-linhas-de-zoom-em-quadrinhos-amarelo_1017-15136.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -131,6 +129,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         MenuFerramentas.add(itemReceitas);
+
+        itemRealizarCompras.setText("Realizar Compra");
+        MenuFerramentas.add(itemRealizarCompras);
 
         jMenuBar1.add(MenuFerramentas);
 
@@ -223,13 +224,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuEstoque;
     private javax.swing.JMenu MenuFerramentas;
     private javax.swing.JRadioButtonMenuItem itemProdutosDisponiveis;
+    private javax.swing.JMenuItem itemRealizarCompras;
     private javax.swing.JMenuItem itemReceitas;
     private javax.swing.JMenuItem itemSairtudo;
     private javax.swing.JRadioButtonMenuItem itemTodosProdutos;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTProdutos;
     private javax.swing.JLabel labelFundoo;
     private javax.swing.JMenu menuSair;
     // End of variables declaration//GEN-END:variables

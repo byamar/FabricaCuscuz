@@ -5,6 +5,15 @@
  */
 package fabricacuscuz.interfaces;
 
+import connection.ProdutoDAO;
+import fabricacuscuz.dominio.Produto;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import fabricacuscuz.interfaces.TelaPrincipal;
+
 
 
 
@@ -38,7 +47,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoCadastrarP = new javax.swing.JButton();
         botaoSairTelaC = new javax.swing.JButton();
         labelConcluido = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        labelID = new javax.swing.JLabel();
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +61,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPreco);
-        txtPreco.setBounds(180, 360, 70, 30);
+        txtPreco.setBounds(180, 340, 90, 40);
 
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +69,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtDescricao);
-        txtDescricao.setBounds(240, 300, 250, 30);
+        txtDescricao.setBounds(230, 290, 450, 40);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +77,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNome);
-        txtNome.setBounds(160, 250, 290, 30);
+        txtNome.setBounds(160, 230, 300, 40);
 
         txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,19 +85,20 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtQuantidade);
-        txtQuantidade.setBounds(270, 410, 60, 30);
+        txtQuantidade.setBounds(260, 390, 70, 40);
 
-        botaoCadastrarP.setBackground(new java.awt.Color(0, 0, 0));
+        botaoCadastrarP.setBackground(new java.awt.Color(255, 255, 255));
         botaoCadastrarP.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         botaoCadastrarP.setForeground(new java.awt.Color(255, 204, 0));
-        botaoCadastrarP.setText("Cadastrar");
+        botaoCadastrarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaocadastrar.jpg"))); // NOI18N
+        botaoCadastrarP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoCadastrarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarPActionPerformed(evt);
             }
         });
         getContentPane().add(botaoCadastrarP);
-        botaoCadastrarP.setBounds(560, 480, 150, 60);
+        botaoCadastrarP.setBounds(560, 500, 150, 40);
 
         botaoSairTelaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
         botaoSairTelaC.addActionListener(new java.awt.event.ActionListener() {
@@ -102,13 +112,15 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         labelConcluido.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         labelConcluido.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(labelConcluido);
-        labelConcluido.setBounds(120, 480, 270, 50);
-        getContentPane().add(txtID);
-        txtID.setBounds(110, 200, 100, 30);
+        labelConcluido.setBounds(90, 520, 160, 30);
+        getContentPane().add(labelID);
+        labelID.setBounds(100, 514, 110, 30);
 
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto_1.jpg"))); // NOI18N
+        fundo.setForeground(new java.awt.Color(255, 255, 255));
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto.jpg"))); // NOI18N
+        fundo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(fundo);
-        fundo.setBounds(-10, 0, 787, 580);
+        fundo.setBounds(-10, -20, 810, 600);
 
         pack();
         setLocationRelativeTo(null);
@@ -135,13 +147,48 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void botaoCadastrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarPActionPerformed
-        int contador = 0;
-        contador++;
-            txtID.setText("" + contador);
+        int contadorid = 0;
         
-                
+            
         
-        labelConcluido.setText("Cadastro Concluído!");
+            
+        
+        Produto p = new Produto();
+        ProdutoDAO dao = new ProdutoDAO();
+        labelID.setText(Integer.toString(contadorid++));
+        p.setNome(txtNome.getText());
+        p.setDescricao(txtDescricao.getText());
+        p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+        p.setPreco(Double.parseDouble(txtPreco.getText()));
+        
+            try {
+                dao.salvar(p);
+            } catch (SQLException ex) {
+                Logger.getLogger(telaCadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
+        
+            
+            
+         
+            
+//        if(txtNome.getText().equals("") && txtQuantidade.getText().equals("") && txtPreco.getText().equals("")
+//       && txtDescricao.getText().equals("")){
+// JOptionPane.showMessageDialog(null, "Preencha os campos!!");
+// }
+// if(txtNome.getText().equals("")){
+// JOptionPane.showMessageDialog(null, "Preencha o campo NOME");
+//}else if(txtQuantidade.getText().equals("")){
+//  JOptionPane.showMessageDialog(null, "Preencha o campo QUANTIDADE");
+// }else if(txtPreco.getText().equals("")){
+// JOptionPane.showMessageDialog(null, "Preencha o campo PREÇO");
+// }else if(txtDescricao.getText().equals("")){
+// JOptionPane.showMessageDialog(null, "Preencha o campo DESCRIÇÃO");
+/// }
+
+
+// labelConcluido.setText("Cadastro Concluído!");
+
          
     }//GEN-LAST:event_botaoCadastrarPActionPerformed
 
@@ -194,8 +241,8 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
     private javax.swing.JButton botaoSairTelaC;
     private javax.swing.JLabel fundo;
     private javax.swing.JLabel labelConcluido;
+    private javax.swing.JLabel labelID;
     private javax.swing.JTextField txtDescricao;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQuantidade;

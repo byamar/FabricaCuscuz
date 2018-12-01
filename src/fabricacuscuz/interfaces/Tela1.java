@@ -35,6 +35,7 @@ public class Tela1 extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         Senha = new javax.swing.JPasswordField();
         botaoSair = new javax.swing.JButton();
+        botaoCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
@@ -44,13 +45,13 @@ public class Tela1 extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botaoComecar.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        botaoComecar.setText("COMEÇAR");
+        botaoComecar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoacessar.jpg"))); // NOI18N
         botaoComecar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoComecarActionPerformed(evt);
             }
         });
-        getContentPane().add(botaoComecar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 160, 50));
+        getContentPane().add(botaoComecar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 160, 40));
 
         labelUsuario.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         labelUsuario.setText("USUÁRIO");
@@ -76,6 +77,10 @@ public class Tela1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 40, 40));
+
+        botaoCadastrar.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        botaoCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaocadastrar.jpg"))); // NOI18N
+        getContentPane().add(botaoCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 170, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cuscuzz.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 550));
@@ -146,6 +151,7 @@ public class Tela1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Senha;
+    private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoComecar;
     private javax.swing.JButton botaoSair;
     private javax.swing.JLabel jLabel1;

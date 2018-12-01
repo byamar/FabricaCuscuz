@@ -38,19 +38,22 @@ public class TelaReceitas extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         botaoacessar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoacessar1.setText("ACESSAR");
+        botaoacessar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoacessar.jpg"))); // NOI18N
+        botaoacessar1.setToolTipText("");
+        botaoacessar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoacessar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoacessar1ActionPerformed(evt);
             }
         });
         getContentPane().add(botaoacessar1);
-        botaoacessar1.setBounds(410, 190, 130, 30);
+        botaoacessar1.setBounds(410, 180, 140, 40);
 
         botaoacessar2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoacessar2.setText("ACESSAR");
+        botaoacessar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoacessar.jpg"))); // NOI18N
+        botaoacessar2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(botaoacessar2);
-        botaoacessar2.setBounds(580, 310, 120, 30);
+        botaoacessar2.setBounds(580, 300, 130, 40);
 
         botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
         botaoSair.addActionListener(new java.awt.event.ActionListener() {

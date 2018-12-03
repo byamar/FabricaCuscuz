@@ -31,11 +31,11 @@ public class ProdutoDAO extends GeralDAO{
   
         try {
             stm = con.prepareStatement("INSERT INTO `produto`(`ID`, `Nome`, `Descricao`, `preco`, `quantidade`) VALUES (?,?,?,?,?)");
-            stm.setInt(1, produto.getId());
-            stm.setString(2, produto.getNome());
-            stm.setString(3,produto.getDescricao());     
-            stm.setInt(4, produto.getQuantidade());
-            stm.setDouble(5, produto.getPreco());
+            
+            stm.setString(1, produto.getNome());
+            stm.setString(2,produto.getDescricao());     
+            stm.setInt(3, produto.getQuantidade());
+            stm.setDouble(4, produto.getPreco());
             
             stm.execute();
                     
@@ -49,22 +49,68 @@ public class ProdutoDAO extends GeralDAO{
         
         
     }
+     public void update (Produto produto){
+                Connection con = ConnectionFactory.getConexao();
+        PreparedStatement stm = null;
+        
+  
+        try {
+            stm = con.prepareStatement("UPDATE `produto` SET `Nome`= ?,`Descricao`= ?,`preco`= ?,`quantidade`= ? `ID` = ?  WHERE ID = ?");
+            
+            stm.setString(1, produto.getNome());
+            stm.setString(2,produto.getDescricao());     
+            stm.setInt(3, produto.getQuantidade());
+            stm.setDouble(4, produto.getPreco());
+            stm.setInt(5, produto.getId());
+            stm.executeUpdate();
+                    
+                  JOptionPane.showMessageDialog(null,"Atualizado com sucesso");
+                  
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "erro ao atualizar: "+ex);
+                    }
+     
+
+        
+        
+     }
     
-    public List<Produto> listar() throws SQLException{
-        String sql = "select ID,Nome from produto";
-        ResultSet resultSet = consultar(sql);
-        List<Produto> produtos = new ArrayList();
-        while (resultSet.next()){
-            produtos.add(popularProduto(resultSet));
-        }
+   public List<Produto> read(){
+       
+       Connection con = ConnectionFactory.getConexao();
+       PreparedStatement stmt = null;
+       ResultSet rs = null;
+       
+       
+       List<Produto> produtos = new ArrayList();
+       
+       try{
+           stmt = con.prepareStatement("SELECT * FROM produto");
+          rs = stmt.executeQuery();
+          
+          while(rs.next()){
+              
+              Produto p = new Produto();
+              p.setId(rs.getInt("ID"));
+              p.setNome(rs.getString("Nome"));
+              p.setDescricao(rs.getString("Descricao"));
+              p.setPreco(rs.getDouble("preco"));
+              p.setQuantidade(rs.getInt("quantidade"));
+              produtos.add(p);
+              
+          }
+       }catch (SQLException ex){
+           Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE,null,ex);
+           
+       
+       } 
         return produtos;
-    }
+       
+       
+       
+   
     
-    private Produto popularProduto(ResultSet resultSet) throws SQLException{
-        Produto produto = new Produto();
-        produto.setId(resultSet.getInt("ID"));
-        produto.setNome(resultSet.getString("Nome"));
-        return produto;
-    }
     
+    
+}
 }

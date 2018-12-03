@@ -13,24 +13,41 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import fabricacuscuz.interfaces.TelaPrincipal;
-
-
-
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author Beatriz
  */
 public class telaCadastrarProduto extends javax.swing.JFrame {
-   
 
     /**
      * Creates new form telaCadastrarProduto
      */
     public telaCadastrarProduto() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
+        readJTable();
+;
     }
 
+    public void readJTable(){
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        dtm.setNumRows(0);
+        ProdutoDAO dao = new ProdutoDAO();
+        
+        for(Produto produto : dao.read()){
+            dtm.addRow(new Object[]{
+                produto.getId(),
+                produto.getNome(),
+                produto.getDescricao(),
+                produto.getPreco(),
+                produto.getQuantidade()
+            });
+            
+            
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +65,10 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoSairTelaC = new javax.swing.JButton();
         labelConcluido = new javax.swing.JLabel();
         labelID = new javax.swing.JLabel();
+        jTableProduto = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        botaoExcluir = new javax.swing.JButton();
+        botaoAtualizar = new javax.swing.JButton();
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,7 +82,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPreco);
-        txtPreco.setBounds(180, 340, 90, 40);
+        txtPreco.setBounds(160, 410, 90, 40);
 
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +90,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtDescricao);
-        txtDescricao.setBounds(230, 290, 450, 40);
+        txtDescricao.setBounds(240, 320, 450, 40);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +98,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNome);
-        txtNome.setBounds(160, 230, 300, 40);
+        txtNome.setBounds(150, 230, 300, 40);
 
         txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +106,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtQuantidade);
-        txtQuantidade.setBounds(260, 390, 70, 40);
+        txtQuantidade.setBounds(270, 510, 70, 40);
 
         botaoCadastrarP.setBackground(new java.awt.Color(255, 255, 255));
         botaoCadastrarP.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
@@ -98,7 +119,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoCadastrarP);
-        botaoCadastrarP.setBounds(560, 500, 150, 40);
+        botaoCadastrarP.setBounds(260, 630, 160, 50);
 
         botaoSairTelaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
         botaoSairTelaC.addActionListener(new java.awt.event.ActionListener() {
@@ -107,71 +128,104 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoSairTelaC);
-        botaoSairTelaC.setBounds(690, 20, 40, 40);
+        botaoSairTelaC.setBounds(1310, 10, 40, 40);
 
         labelConcluido.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         labelConcluido.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(labelConcluido);
-        labelConcluido.setBounds(90, 520, 160, 30);
+        labelConcluido.setBounds(80, 640, 120, 40);
         getContentPane().add(labelID);
         labelID.setBounds(100, 514, 110, 30);
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "NOME", "DESCRIÇÃO", "PREÇO", "QUANTIDADE"
+            }
+        ));
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
+            }
+        });
+        jTableProduto.setViewportView(jTable1);
+
+        getContentPane().add(jTableProduto);
+        jTableProduto.setBounds(800, 210, 550, 470);
+
+        botaoExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoexluir.jpg"))); // NOI18N
+        botaoExcluir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoExcluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botaoExcluir);
+        botaoExcluir.setBounds(440, 630, 180, 50);
+
+        botaoAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoatualizar.jpg"))); // NOI18N
+        botaoAtualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAtualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botaoAtualizar);
+        botaoAtualizar.setBounds(1200, 140, 140, 43);
+
         fundo.setForeground(new java.awt.Color(255, 255, 255));
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto.jpg"))); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastrarprodutostelacheia.jpg"))); // NOI18N
         fundo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(fundo);
-        fundo.setBounds(-10, -20, 810, 600);
+        fundo.setBounds(0, -10, 1430, 780);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-        
-    
+
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
-       
+
     }//GEN-LAST:event_txtDescricaoActionPerformed
 
     private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
-      
+
     }//GEN-LAST:event_txtPrecoActionPerformed
 
     private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
-      
+
     }//GEN-LAST:event_txtQuantidadeActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-       
-      
+
+
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void botaoCadastrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarPActionPerformed
-        int contadorid = 0;
-        
-            
-        
-            
         
         Produto p = new Produto();
         ProdutoDAO dao = new ProdutoDAO();
-        labelID.setText(Integer.toString(contadorid++));
+        
         p.setNome(txtNome.getText());
         p.setDescricao(txtDescricao.getText());
         p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
         p.setPreco(Double.parseDouble(txtPreco.getText()));
-        
-            try {
-                dao.salvar(p);
-            } catch (SQLException ex) {
-                Logger.getLogger(telaCadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
-            }
-       
-        
+
+        try {
+            dao.salvar(p);
+            readJTable();
+            txtNome.setText("");
+            txtDescricao.setText("");
+            txtPreco.setText("");
+            txtQuantidade.setText("");
             
-            
-         
-            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(telaCadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
 //        if(txtNome.getText().equals("") && txtQuantidade.getText().equals("") && txtPreco.getText().equals("")
 //       && txtDescricao.getText().equals("")){
 // JOptionPane.showMessageDialog(null, "Preencha os campos!!");
@@ -185,11 +239,8 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
 // }else if(txtDescricao.getText().equals("")){
 // JOptionPane.showMessageDialog(null, "Preencha o campo DESCRIÇÃO");
 /// }
-
-
 // labelConcluido.setText("Cadastro Concluído!");
 
-         
     }//GEN-LAST:event_botaoCadastrarPActionPerformed
 
     private void botaoSairTelaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairTelaCActionPerformed
@@ -197,10 +248,54 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         telap.setVisible(true);
         dispose();
     }//GEN-LAST:event_botaoSairTelaCActionPerformed
-      
-        
-        
-    
+
+    private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
+
+
+    }//GEN-LAST:event_botaoExcluirActionPerformed
+
+    private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
+if(jTable1.getSelectedRow() != -1){
+        Produto p = new Produto();
+        ProdutoDAO dao = new ProdutoDAO();  
+       
+        p.setNome(txtNome.getText());
+        p.setDescricao(txtDescricao.getText());
+        p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+        p.setPreco(Double.parseDouble(txtPreco.getText()));
+  
+       
+
+       
+    try {
+        dao.update(p);
+        dao.salvar(p);
+    } catch (SQLException ex) {
+        Logger.getLogger(telaCadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
+    }
+       txtNome.setText("");
+       txtDescricao.setText("");
+       txtPreco.setText("");
+       txtQuantidade.setText("");
+       readJTable();
+           
+           
+           
+}
+    }//GEN-LAST:event_botaoAtualizarActionPerformed
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+
+        if(jTable1.getSelectedRow() != -1){
+            
+            txtNome.setText(jTable1.getValueAt(jTable1.getSelectedRow(),1).toString());
+            txtDescricao.setText(jTable1.getValueAt(jTable1.getSelectedRow(),2).toString());
+            txtPreco.setText(jTable1.getValueAt(jTable1.getSelectedRow(),3).toString());
+            txtQuantidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(),4).toString());
+            
+        }
+    }//GEN-LAST:event_jTable1KeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -237,9 +332,13 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoAtualizar;
     private javax.swing.JButton botaoCadastrarP;
+    private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoSairTelaC;
     private javax.swing.JLabel fundo;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jTableProduto;
     private javax.swing.JLabel labelConcluido;
     private javax.swing.JLabel labelID;
     private javax.swing.JTextField txtDescricao;

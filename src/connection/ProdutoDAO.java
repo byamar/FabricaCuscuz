@@ -30,12 +30,13 @@ public class ProdutoDAO extends GeralDAO{
         
   
         try {
-            stm = con.prepareStatement("INSERT INTO `produto`(`ID`, `Nome`, `Descricao`, `preco`, `quantidade`) VALUES (?,?,?,?,?)");
+            stm = con.prepareStatement("INSERT INTO `produto`( `Nome`, `Descricao`, `preco`, `quantidade`, `categoria`) VALUES (?,?,?,?,?)");
             
             stm.setString(1, produto.getNome());
             stm.setString(2,produto.getDescricao());     
             stm.setInt(3, produto.getQuantidade());
             stm.setDouble(4, produto.getPreco());
+            stm.setString(5, produto.getCategoria());
             
             stm.execute();
                     

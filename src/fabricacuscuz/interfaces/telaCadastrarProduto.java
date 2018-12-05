@@ -41,8 +41,10 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
                 produto.getId(),
                 produto.getNome(),
                 produto.getDescricao(),
+                produto.getQuantidade(),
                 produto.getPreco(),
-                produto.getQuantidade()
+                produto.getCategoria()
+                    
             });
             
             
@@ -69,6 +71,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         botaoExcluir = new javax.swing.JButton();
         botaoAtualizar = new javax.swing.JButton();
+        txtCategoria = new javax.swing.JTextField();
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,7 +85,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPreco);
-        txtPreco.setBounds(160, 410, 90, 40);
+        txtPreco.setBounds(970, 150, 90, 30);
 
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +93,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtDescricao);
-        txtDescricao.setBounds(240, 320, 450, 40);
+        txtDescricao.setBounds(560, 150, 250, 30);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +101,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNome);
-        txtNome.setBounds(150, 230, 300, 40);
+        txtNome.setBounds(120, 150, 280, 30);
 
         txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +109,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtQuantidade);
-        txtQuantidade.setBounds(270, 510, 70, 40);
+        txtQuantidade.setBounds(1170, 150, 70, 30);
 
         botaoCadastrarP.setBackground(new java.awt.Color(255, 255, 255));
         botaoCadastrarP.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
@@ -119,7 +122,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoCadastrarP);
-        botaoCadastrarP.setBounds(260, 630, 160, 50);
+        botaoCadastrarP.setBounds(1130, 300, 160, 50);
 
         botaoSairTelaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
         botaoSairTelaC.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +131,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoSairTelaC);
-        botaoSairTelaC.setBounds(1310, 10, 40, 40);
+        botaoSairTelaC.setBounds(1180, 20, 40, 40);
 
         labelConcluido.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         labelConcluido.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,14 +140,53 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         getContentPane().add(labelID);
         labelID.setBounds(100, 514, 110, 30);
 
+        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NOME", "DESCRIÇÃO", "PREÇO", "QUANTIDADE"
+                "ID", "NOME", "DESCRIÇÃO", "PREÇO", "QUANTIDADE", "CATEGORIA"
             }
         ));
+        jTable1.setToolTipText("CADASTRO DE PRODUTOS");
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTable1KeyReleased(evt);
@@ -153,7 +195,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         jTableProduto.setViewportView(jTable1);
 
         getContentPane().add(jTableProduto);
-        jTableProduto.setBounds(800, 210, 550, 470);
+        jTableProduto.setBounds(60, 250, 1010, 500);
 
         botaoExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoexluir.jpg"))); // NOI18N
         botaoExcluir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -163,7 +205,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoExcluir);
-        botaoExcluir.setBounds(440, 630, 180, 50);
+        botaoExcluir.setBounds(1130, 440, 180, 50);
 
         botaoAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoatualizar.jpg"))); // NOI18N
         botaoAtualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -173,10 +215,12 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoAtualizar);
-        botaoAtualizar.setBounds(1200, 140, 140, 43);
+        botaoAtualizar.setBounds(1140, 573, 170, 50);
+        getContentPane().add(txtCategoria);
+        txtCategoria.setBounds(180, 190, 220, 30);
 
         fundo.setForeground(new java.awt.Color(255, 255, 255));
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastrarprodutostelacheia.jpg"))); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastrarprodutostelacheia_1.jpg"))); // NOI18N
         fundo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(fundo);
         fundo.setBounds(0, -10, 1430, 780);
@@ -212,6 +256,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         p.setDescricao(txtDescricao.getText());
         p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
         p.setPreco(Double.parseDouble(txtPreco.getText()));
+        p.setCategoria(txtCategoria.getText());
 
         try {
             dao.salvar(p);
@@ -220,6 +265,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             txtDescricao.setText("");
             txtPreco.setText("");
             txtQuantidade.setText("");
+            txtCategoria.setText("");
             
            
         } catch (SQLException ex) {
@@ -292,6 +338,7 @@ if(jTable1.getSelectedRow() != -1){
             txtDescricao.setText(jTable1.getValueAt(jTable1.getSelectedRow(),2).toString());
             txtPreco.setText(jTable1.getValueAt(jTable1.getSelectedRow(),3).toString());
             txtQuantidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(),4).toString());
+            txtCategoria.setText(jTable1.getValueAt(jTable1.getSelectedRow(),5).toString());
             
         }
     }//GEN-LAST:event_jTable1KeyReleased
@@ -341,6 +388,7 @@ if(jTable1.getSelectedRow() != -1){
     private javax.swing.JScrollPane jTableProduto;
     private javax.swing.JLabel labelConcluido;
     private javax.swing.JLabel labelID;
+    private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPreco;

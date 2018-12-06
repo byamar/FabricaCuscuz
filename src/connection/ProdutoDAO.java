@@ -97,6 +97,7 @@ public class ProdutoDAO extends GeralDAO{
               p.setDescricao(rs.getString("Descricao"));
               p.setPreco(rs.getDouble("preco"));
               p.setQuantidade(rs.getInt("quantidade"));
+              p.setCategoria(rs.getString("categoria"));
               produtos.add(p);
               
           }

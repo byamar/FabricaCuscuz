@@ -41,8 +41,8 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
                 produto.getId(),
                 produto.getNome(),
                 produto.getDescricao(),
-                produto.getQuantidade(),
                 produto.getPreco(),
+                produto.getQuantidade(),
                 produto.getCategoria()
                     
             });
@@ -141,7 +141,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         labelID.setBounds(100, 514, 110, 30);
 
         jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},

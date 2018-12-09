@@ -6,6 +6,8 @@
 
 package fabricacuscuz.interfaces;
 
+import static java.awt.Frame.MAXIMIZED_BOTH;
+
 
 
 /**
@@ -20,6 +22,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /** Creates new form TelaPrincipal */
     public TelaPrincipal() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /** This method is called from within the constructor to
@@ -31,95 +34,82 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botavenda = new javax.swing.JButton();
+        botaReceita = new javax.swing.JButton();
+        cadastrarproduto = new javax.swing.JButton();
+        sair = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        MenuCadastro = new javax.swing.JMenu();
-        ItemCproduto = new javax.swing.JMenuItem();
-        venda = new javax.swing.JMenuItem();
-        MenuFerramentas = new javax.swing.JMenu();
-        itemReceitas = new javax.swing.JMenuItem();
-        menuSair = new javax.swing.JMenu();
-        itemSairtudo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/logopratelaprincipal-Recuperado.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 400));
-
-        MenuCadastro.setText("Cadastro");
-
-        ItemCproduto.setText("Produto");
-        ItemCproduto.addActionListener(new java.awt.event.ActionListener() {
+        botavenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/registrarvendabotao.jpg"))); // NOI18N
+        botavenda.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botavenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ItemCprodutoActionPerformed(evt);
+                botavendaActionPerformed(evt);
             }
         });
-        MenuCadastro.add(ItemCproduto);
+        getContentPane().add(botavenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 170, 60));
 
-        venda.setText("Venda");
-        venda.addActionListener(new java.awt.event.ActionListener() {
+        botaReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoregistrarreceita.jpg"))); // NOI18N
+        botaReceita.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaReceita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vendaActionPerformed(evt);
+                botaReceitaActionPerformed(evt);
             }
         });
-        MenuCadastro.add(venda);
+        getContentPane().add(botaReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, 170, 60));
 
-        jMenuBar1.add(MenuCadastro);
-
-        MenuFerramentas.setText("Ferramentas");
-
-        itemReceitas.setText("Receitas");
-        itemReceitas.addActionListener(new java.awt.event.ActionListener() {
+        cadastrarproduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaocadastrarproduto.jpg"))); // NOI18N
+        cadastrarproduto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cadastrarproduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemReceitasActionPerformed(evt);
+                cadastrarprodutoActionPerformed(evt);
             }
         });
-        MenuFerramentas.add(itemReceitas);
+        getContentPane().add(cadastrarproduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 170, 60));
 
-        jMenuBar1.add(MenuFerramentas);
-
-        menuSair.setText("Sair");
-
-        itemSairtudo.setText("Fechar tudo");
-        itemSairtudo.addActionListener(new java.awt.event.ActionListener() {
+        sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
+        sair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemSairtudoActionPerformed(evt);
+                sairActionPerformed(evt);
             }
         });
-        menuSair.add(itemSairtudo);
+        getContentPane().add(sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 30, 40, 40));
 
-        jMenuBar1.add(menuSair);
-
-        setJMenuBar(jMenuBar1);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/telaprincipal_2.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 770));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ItemCprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCprodutoActionPerformed
-        telaCadastrarProduto telacadastrar = new telaCadastrarProduto();
-        telacadastrar.setVisible(true);
+    private void cadastrarprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarprodutoActionPerformed
+        // TODO add your handling code here:
+        new telaCadastrarProduto().setVisible(true);
         dispose();
-    }//GEN-LAST:event_ItemCprodutoActionPerformed
+    }//GEN-LAST:event_cadastrarprodutoActionPerformed
 
-    private void itemReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReceitasActionPerformed
-        TelaReceitas  tela = new TelaReceitas();
-        tela.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_itemReceitasActionPerformed
-
-    private void itemSairtudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSairtudoActionPerformed
-        dispose();
-    }//GEN-LAST:event_itemSairtudoActionPerformed
-
-    private void vendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaActionPerformed
+    private void botavendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botavendaActionPerformed
         // TODO add your handling code here:
         new RegistroVenda().setVisible(true);
         dispose();
-    }//GEN-LAST:event_vendaActionPerformed
+        
+    }//GEN-LAST:event_botavendaActionPerformed
+
+    private void botaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaReceitaActionPerformed
+        // TODO add your handling code here:
+        new TelaReceitas().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botaReceitaActionPerformed
+
+    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_sairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,15 +147,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem ItemCproduto;
-    private javax.swing.JMenu MenuCadastro;
-    private javax.swing.JMenu MenuFerramentas;
-    private javax.swing.JMenuItem itemReceitas;
-    private javax.swing.JMenuItem itemSairtudo;
+    private javax.swing.JButton botaReceita;
+    private javax.swing.JButton botavenda;
+    private javax.swing.JButton cadastrarproduto;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu menuSair;
-    private javax.swing.JMenuItem venda;
+    private javax.swing.JButton sair;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -84,7 +84,7 @@
           <Image iconType="3" name="/fabricacuscuz/imagens/botaocadastrar.jpg"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
             <BevelBorder/>
           </Border>
         </Property>
@@ -101,7 +101,12 @@
     <Component class="javax.swing.JButton" name="botaoSairTelaC">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/fabricacuscuz/imagens/icon (1).png"/>
+          <Image iconType="3" name="/fabricacuscuz/imagens/left-pointing-arrow.png"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+            <BevelBorder/>
+          </Border>
         </Property>
       </Properties>
       <Events>
@@ -224,7 +229,7 @@
           <Image iconType="3" name="/fabricacuscuz/imagens/botaoexluir.jpg"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
             <BevelBorder/>
           </Border>
         </Property>
@@ -244,7 +249,7 @@
           <Image iconType="3" name="/fabricacuscuz/imagens/botaoatualizar_1.jpg"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
             <BevelBorder/>
           </Border>
         </Property>
@@ -289,7 +294,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
             <BevelBorder/>
           </Border>
         </Property>
@@ -299,7 +304,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1100" y="220" width="150" height="30"/>
+          <AbsoluteConstraints x="1100" y="210" width="150" height="40"/>
         </Constraint>
       </Constraints>
     </Component>

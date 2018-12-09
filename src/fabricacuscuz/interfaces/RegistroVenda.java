@@ -75,6 +75,7 @@ public class RegistroVenda extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         botaoRegistrar = new javax.swing.JButton();
         txtDataVenda = new javax.swing.JTextField();
+        botaoVoltar = new javax.swing.JButton();
         labelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -133,7 +134,7 @@ public class RegistroVenda extends javax.swing.JFrame {
         jScrollPane1.setBounds(30, 240, 1090, 540);
 
         botaoRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/registrar.jpg"))); // NOI18N
-        botaoRegistrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoRegistrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoRegistrarActionPerformed(evt);
@@ -143,6 +144,16 @@ public class RegistroVenda extends javax.swing.JFrame {
         botaoRegistrar.setBounds(1150, 280, 170, 40);
         getContentPane().add(txtDataVenda);
         txtDataVenda.setBounds(950, 130, 160, 30);
+
+        botaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/left-pointing-arrow.png"))); // NOI18N
+        botaoVoltar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botaoVoltar);
+        botaoVoltar.setBounds(1290, 30, 40, 40);
 
         labelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/registrodevenda_3.jpg"))); // NOI18N
         getContentPane().add(labelFundo);
@@ -196,6 +207,12 @@ public class RegistroVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDistribuidoraActionPerformed
 
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+        // TODO add your handling code here:
+        new TelaPrincipal().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botaoVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,6 +250,7 @@ public class RegistroVenda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoRegistrar;
+    private javax.swing.JButton botaoVoltar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelFundo;

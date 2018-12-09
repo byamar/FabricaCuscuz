@@ -51,6 +51,7 @@ public class Tela1 extends javax.swing.JFrame {
 
         botaoComecar.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         botaoComecar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoacessar.jpg"))); // NOI18N
+        botaoComecar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoComecar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoComecarActionPerformed(evt);
@@ -76,6 +77,7 @@ public class Tela1 extends javax.swing.JFrame {
         getContentPane().add(Senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 170, 30));
 
         botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
+        botaoSair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSairActionPerformed(evt);
@@ -85,6 +87,7 @@ public class Tela1 extends javax.swing.JFrame {
 
         botaoCadastrar.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         botaoCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaocadastrar.jpg"))); // NOI18N
+        botaoCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarActionPerformed(evt);
@@ -93,7 +96,7 @@ public class Tela1 extends javax.swing.JFrame {
         getContentPane().add(botaoCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 170, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/logocomfundo.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 800, 580));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 800, 630));
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -107,6 +110,8 @@ public class Tela1 extends javax.swing.JFrame {
           this.dispose();
       }else{
           JOptionPane.showMessageDialog(null, "Senha ou usuário incorretos!");
+          txtUsuario.setText("");
+          Senha.setText("");
       }
               
      

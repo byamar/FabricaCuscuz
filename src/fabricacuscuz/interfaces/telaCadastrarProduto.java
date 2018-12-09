@@ -140,7 +140,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoCadastrarP.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         botaoCadastrarP.setForeground(new java.awt.Color(255, 204, 0));
         botaoCadastrarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaocadastrar.jpg"))); // NOI18N
-        botaoCadastrarP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoCadastrarP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoCadastrarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarPActionPerformed(evt);
@@ -149,7 +149,8 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         getContentPane().add(botaoCadastrarP);
         botaoCadastrarP.setBounds(1140, 510, 160, 40);
 
-        botaoSairTelaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
+        botaoSairTelaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/left-pointing-arrow.png"))); // NOI18N
+        botaoSairTelaC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoSairTelaC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSairTelaCActionPerformed(evt);
@@ -234,7 +235,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         jTableProduto.setBounds(60, 270, 1010, 500);
 
         botaoExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoexluir.jpg"))); // NOI18N
-        botaoExcluir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoExcluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoExcluirActionPerformed(evt);
@@ -244,7 +245,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoExcluir.setBounds(1140, 340, 170, 40);
 
         botaoAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoatualizar_1.jpg"))); // NOI18N
-        botaoAtualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoAtualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAtualizarActionPerformed(evt);
@@ -267,14 +268,14 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
 
         botaoBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/buscar.jpg"))); // NOI18N
         botaoBuscar.setText("jButton1");
-        botaoBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoBuscarActionPerformed(evt);
             }
         });
         getContentPane().add(botaoBuscar);
-        botaoBuscar.setBounds(1100, 220, 150, 30);
+        botaoBuscar.setBounds(1100, 210, 150, 40);
 
         fundo.setForeground(new java.awt.Color(255, 255, 255));
         fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto_1.jpg"))); // NOI18N

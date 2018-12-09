@@ -52,7 +52,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         Senha.setBounds(170, 390, 350, 40);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaocadastrar.jpg"))); // NOI18N
-        jButton1.setBorder(null);
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setPreferredSize(new java.awt.Dimension(201, 47));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +76,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         labelFundo.setMaximumSize(new java.awt.Dimension(650, 626));
         labelFundo.setMinimumSize(null);
         getContentPane().add(labelFundo);
-        labelFundo.setBounds(0, -30, 770, 630);
+        labelFundo.setBounds(0, -30, 780, 630);
 
         pack();
         setLocationRelativeTo(null);
@@ -89,6 +89,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         f.setSenha(Senha.getText());
         try {
             dao.salvarUsuario(f);
+            txtNome.setText("");
+            Senha.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -5,6 +5,11 @@
  */
 package fabricacuscuz.interfaces;
 
+import connection.ProdutoDAO;
+import connection.UsuarioDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -80,6 +85,11 @@ public class Tela1 extends javax.swing.JFrame {
 
         botaoCadastrar.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         botaoCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaocadastrar.jpg"))); // NOI18N
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(botaoCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 170, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/logocomfundo.jpg"))); // NOI18N
@@ -91,19 +101,15 @@ public class Tela1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoComecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoComecarActionPerformed
-       if(txtUsuario.getText().equals("jaba") && Senha.getText().equals("jaba")){
-          TelaPrincipal tela = new TelaPrincipal();
-        tela.setVisible(true);
-        dispose();
-       }else if(txtUsuario.getText().equals("") | Senha.getText().equals("")){
-           JOptionPane.showMessageDialog(null, "Por favor preencha os campos!");
-           
-       }else{
-           JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos! ");
-       }
+      UsuarioDAO dao = new UsuarioDAO();
+      if(dao.checkLogin(txtUsuario.getText(), Senha.getText())){
+          new TelaPrincipal().setVisible(true);
+          this.dispose();
+      }else{
+          JOptionPane.showMessageDialog(null, "Senha ou usuário incorretos!");
+      }
               
-        
-        
+     
     }//GEN-LAST:event_botaoComecarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
@@ -113,6 +119,13 @@ public class Tela1 extends javax.swing.JFrame {
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
         dispose();
     }//GEN-LAST:event_botaoSairActionPerformed
+
+    private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+        // TODO add your handling code here:
+        CadastrarUsuario t = new CadastrarUsuario();
+        t.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

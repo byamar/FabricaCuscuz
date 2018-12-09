@@ -27,8 +27,9 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
     public telaCadastrarProduto() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        jTable1.setRowSorter(new TableRowSorter(dtm));
         readJTable();
-;
     }
 
     public void readJTable(){
@@ -39,11 +40,32 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         for(Produto produto : dao.read()){
             dtm.addRow(new Object[]{
                 produto.getId(),
-                produto.getNome(),
+                produto.getFuncionario(),
                 produto.getDescricao(),
                 produto.getPreco(),
                 produto.getQuantidade(),
-                produto.getCategoria()
+                produto.getCategoria(),
+                produto.getFornecedor()
+                    
+            });
+            
+            
+        }
+    }
+    public void readjTableForDesc(String desc){
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        dtm.setNumRows(0);
+        ProdutoDAO dao = new ProdutoDAO();
+        
+        for(Produto produto : dao.readForDesc(desc)){
+            dtm.addRow(new Object[]{
+                produto.getId(),
+                produto.getFuncionario(),
+                produto.getDescricao(),
+                produto.getPreco(),
+                produto.getQuantidade(),
+                produto.getCategoria(),
+                produto.getFornecedor()
                     
             });
             
@@ -61,7 +83,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
 
         txtPreco = new javax.swing.JTextField();
         txtDescricao = new javax.swing.JTextField();
-        txtNome = new javax.swing.JTextField();
+        txtFuncionario = new javax.swing.JTextField();
         txtQuantidade = new javax.swing.JTextField();
         botaoCadastrarP = new javax.swing.JButton();
         botaoSairTelaC = new javax.swing.JButton();
@@ -72,6 +94,9 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoExcluir = new javax.swing.JButton();
         botaoAtualizar = new javax.swing.JButton();
         txtCategoria = new javax.swing.JTextField();
+        txtFornecedor = new javax.swing.JTextField();
+        txtBusca = new javax.swing.JTextField();
+        botaoBuscar = new javax.swing.JButton();
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,7 +110,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPreco);
-        txtPreco.setBounds(970, 150, 90, 30);
+        txtPreco.setBounds(1130, 150, 110, 30);
 
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,15 +118,15 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtDescricao);
-        txtDescricao.setBounds(560, 150, 250, 30);
+        txtDescricao.setBounds(550, 150, 220, 30);
 
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
+        txtFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
+                txtFuncionarioActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNome);
-        txtNome.setBounds(120, 150, 280, 30);
+        getContentPane().add(txtFuncionario);
+        txtFuncionario.setBounds(200, 150, 150, 30);
 
         txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +134,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtQuantidade);
-        txtQuantidade.setBounds(1170, 150, 70, 30);
+        txtQuantidade.setBounds(930, 150, 80, 30);
 
         botaoCadastrarP.setBackground(new java.awt.Color(255, 255, 255));
         botaoCadastrarP.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
@@ -122,7 +147,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoCadastrarP);
-        botaoCadastrarP.setBounds(1130, 300, 160, 50);
+        botaoCadastrarP.setBounds(1140, 510, 160, 40);
 
         botaoSairTelaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
         botaoSairTelaC.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +156,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoSairTelaC);
-        botaoSairTelaC.setBounds(1180, 20, 40, 40);
+        botaoSairTelaC.setBounds(1280, 20, 40, 40);
 
         labelConcluido.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         labelConcluido.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,48 +169,59 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NOME", "DESCRIÇÃO", "PREÇO", "QUANTIDADE", "CATEGORIA"
+                "ID", "FUNCIONARIO", "DESCRIÇÃO", "PREÇO", "QUANTIDADE", "CATEGORIA", "FORNECEDOR"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setToolTipText("CADASTRO DE PRODUTOS");
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -195,7 +231,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         jTableProduto.setViewportView(jTable1);
 
         getContentPane().add(jTableProduto);
-        jTableProduto.setBounds(60, 250, 1010, 500);
+        jTableProduto.setBounds(60, 270, 1010, 500);
 
         botaoExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoexluir.jpg"))); // NOI18N
         botaoExcluir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -205,9 +241,9 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoExcluir);
-        botaoExcluir.setBounds(1130, 440, 180, 50);
+        botaoExcluir.setBounds(1140, 340, 170, 40);
 
-        botaoAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoatualizar.jpg"))); // NOI18N
+        botaoAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoatualizar_1.jpg"))); // NOI18N
         botaoAtualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,15 +251,36 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoAtualizar);
-        botaoAtualizar.setBounds(1140, 573, 170, 50);
+        botaoAtualizar.setBounds(1140, 430, 170, 40);
         getContentPane().add(txtCategoria);
-        txtCategoria.setBounds(180, 190, 220, 30);
+        txtCategoria.setBounds(180, 180, 170, 30);
+        getContentPane().add(txtFornecedor);
+        txtFornecedor.setBounds(520, 180, 320, 30);
+
+        txtBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtBusca);
+        txtBusca.setBounds(860, 220, 230, 30);
+
+        botaoBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/buscar.jpg"))); // NOI18N
+        botaoBuscar.setText("jButton1");
+        botaoBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botaoBuscar);
+        botaoBuscar.setBounds(1100, 220, 150, 30);
 
         fundo.setForeground(new java.awt.Color(255, 255, 255));
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastrarprodutostelacheia_1.jpg"))); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto_1.jpg"))); // NOI18N
         fundo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(fundo);
-        fundo.setBounds(0, -10, 1430, 780);
+        fundo.setBounds(0, -30, 1430, 800);
 
         pack();
         setLocationRelativeTo(null);
@@ -242,30 +299,32 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtQuantidadeActionPerformed
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+    private void txtFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuncionarioActionPerformed
 
 
-    }//GEN-LAST:event_txtNomeActionPerformed
+    }//GEN-LAST:event_txtFuncionarioActionPerformed
 
     private void botaoCadastrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarPActionPerformed
         
         Produto p = new Produto();
         ProdutoDAO dao = new ProdutoDAO();
         
-        p.setNome(txtNome.getText());
+        p.setFuncionario(txtFuncionario.getText());
         p.setDescricao(txtDescricao.getText());
-        p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
         p.setPreco(Double.parseDouble(txtPreco.getText()));
+        p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
         p.setCategoria(txtCategoria.getText());
+        p.setFornecedor(txtFornecedor.getText());
 
         try {
             dao.salvar(p);
             readJTable();
-            txtNome.setText("");
+            txtFuncionario.setText("");
             txtDescricao.setText("");
             txtPreco.setText("");
             txtQuantidade.setText("");
             txtCategoria.setText("");
+            txtFornecedor.setText("");
             
            
         } catch (SQLException ex) {
@@ -296,52 +355,85 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoSairTelaCActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-
-
+ if(jTable1.getSelectedRow() != -1){
+       
+   
+        Produto p = new Produto();
+        ProdutoDAO dao = new ProdutoDAO();
+        
+       
+p.setId((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+        dao.apagar(p);
+       
+        txtFuncionario.setText("");
+        txtDescricao.setText("");
+        txtPreco.setText("");
+        txtQuantidade.setText("");
+        txtCategoria.setText("");
+        txtFornecedor.setText("");
+        readJTable(); 
+ }else{
+     JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
+ }
+    
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
-if(jTable1.getSelectedRow() != -1){
+   if(jTable1.getSelectedRow() != -1){
+       
+   if(txtFuncionario.getText().equals("") || txtDescricao.getText().equals("") || txtPreco.getText().equals("") || 
+           txtQuantidade.getText().equals("") || txtCategoria.getText().equals("") || txtFornecedor.getText().equals("")){
+       JOptionPane.showMessageDialog(null, "Por favor, preencha os campos");
+   }
+   }else{
         Produto p = new Produto();
-        ProdutoDAO dao = new ProdutoDAO();  
-       
-        p.setNome(txtNome.getText());
+        ProdutoDAO dao = new ProdutoDAO();       
+        p.setFuncionario(txtFuncionario.getText());
         p.setDescricao(txtDescricao.getText());
-        p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
         p.setPreco(Double.parseDouble(txtPreco.getText()));
-  
+        p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+        p.setCategoria(txtCategoria.getText());
+        p.setFornecedor(txtFornecedor.getText());
+        p.setId((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+        dao.alterar(p);
        
+        txtFuncionario.setText("");
+        txtDescricao.setText("");
+        txtPreco.setText("");
+        txtQuantidade.setText("");
+        txtCategoria.setText("");
+        txtFornecedor.setText("");
+        readJTable();   
+        }
+    
 
-       
-    try {
-        dao.update(p);
-        dao.salvar(p);
-    } catch (SQLException ex) {
-        Logger.getLogger(telaCadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
-    }
-       txtNome.setText("");
-       txtDescricao.setText("");
-       txtPreco.setText("");
-       txtQuantidade.setText("");
-       readJTable();
            
-           
-           
-}
+   
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
     private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
 
         if(jTable1.getSelectedRow() != -1){
             
-            txtNome.setText(jTable1.getValueAt(jTable1.getSelectedRow(),1).toString());
+            txtFuncionario.setText(jTable1.getValueAt(jTable1.getSelectedRow(),1).toString());
             txtDescricao.setText(jTable1.getValueAt(jTable1.getSelectedRow(),2).toString());
             txtPreco.setText(jTable1.getValueAt(jTable1.getSelectedRow(),3).toString());
             txtQuantidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(),4).toString());
             txtCategoria.setText(jTable1.getValueAt(jTable1.getSelectedRow(),5).toString());
+            txtFornecedor.setText(jTable1.getValueAt(jTable1.getSelectedRow(),6).toString());
             
         }
     }//GEN-LAST:event_jTable1KeyReleased
+
+    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaActionPerformed
+
+    private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
+        
+        readjTableForDesc(txtBusca.getText());
+        
+    }//GEN-LAST:event_botaoBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,6 +472,7 @@ if(jTable1.getSelectedRow() != -1){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAtualizar;
+    private javax.swing.JButton botaoBuscar;
     private javax.swing.JButton botaoCadastrarP;
     private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoSairTelaC;
@@ -388,9 +481,11 @@ if(jTable1.getSelectedRow() != -1){
     private javax.swing.JScrollPane jTableProduto;
     private javax.swing.JLabel labelConcluido;
     private javax.swing.JLabel labelID;
+    private javax.swing.JTextField txtBusca;
     private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtDescricao;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtFornecedor;
+    private javax.swing.JTextField txtFuncionario;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables

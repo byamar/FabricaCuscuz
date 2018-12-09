@@ -10,16 +10,18 @@ package fabricacuscuz.dominio;
  * @author Beatriz
  */
 public class Funcionario {
-    private int id;
+    
     private String nome;
+    private String senha;
 
-    public int getId() {
-        return id;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
+
 
     public String getNome() {
         return nome;

@@ -31,21 +31,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        InternalTela = new javax.swing.JInternalFrame();
-        labelFundoo = new javax.swing.JLabel();
-        BotaoSairTelaInternal = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTProdutos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuCadastro = new javax.swing.JMenu();
         ItemCproduto = new javax.swing.JMenuItem();
-        MenuEstoque = new javax.swing.JMenu();
-        itemTodosProdutos = new javax.swing.JRadioButtonMenuItem();
-        itemProdutosDisponiveis = new javax.swing.JRadioButtonMenuItem();
+        venda = new javax.swing.JMenuItem();
         MenuFerramentas = new javax.swing.JMenu();
         itemReceitas = new javax.swing.JMenuItem();
-        itemRealizarCompras = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
         itemSairtudo = new javax.swing.JMenuItem();
 
@@ -53,36 +45,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        InternalTela.setTitle("Bem vindo");
-        InternalTela.setVisible(true);
-
-        labelFundoo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/fundo-de-linhas-de-zoom-em-quadrinhos-amarelo_1017-15136.jpg"))); // NOI18N
-        labelFundoo.setText("jLabel1");
-        InternalTela.getContentPane().add(labelFundoo, java.awt.BorderLayout.CENTER);
-
-        BotaoSairTelaInternal.setText("Sair");
-        BotaoSairTelaInternal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoSairTelaInternalActionPerformed(evt);
-            }
-        });
-        InternalTela.getContentPane().add(BotaoSairTelaInternal, java.awt.BorderLayout.PAGE_END);
-
-        jTProdutos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nome", "Descrição", "Preço", "Quantidade"
-            }
-        ));
-        jScrollPane1.setViewportView(jTProdutos);
-
-        InternalTela.getContentPane().add(jScrollPane1, java.awt.BorderLayout.PAGE_START);
-
-        getContentPane().add(InternalTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 490, 260));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/fundo-de-linhas-de-zoom-em-quadrinhos-amarelo_1017-15136.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/logopratelaprincipal-Recuperado.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 400));
 
@@ -96,29 +59,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         MenuCadastro.add(ItemCproduto);
 
+        venda.setText("Venda");
+        venda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaActionPerformed(evt);
+            }
+        });
+        MenuCadastro.add(venda);
+
         jMenuBar1.add(MenuCadastro);
-
-        MenuEstoque.setText("Estoque");
-
-        itemTodosProdutos.setSelected(true);
-        itemTodosProdutos.setText("Todos Produtos");
-        itemTodosProdutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemTodosProdutosActionPerformed(evt);
-            }
-        });
-        MenuEstoque.add(itemTodosProdutos);
-
-        itemProdutosDisponiveis.setSelected(true);
-        itemProdutosDisponiveis.setText("Produtos Disponiveis");
-        itemProdutosDisponiveis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemProdutosDisponiveisActionPerformed(evt);
-            }
-        });
-        MenuEstoque.add(itemProdutosDisponiveis);
-
-        jMenuBar1.add(MenuEstoque);
 
         MenuFerramentas.setText("Ferramentas");
 
@@ -129,9 +78,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         MenuFerramentas.add(itemReceitas);
-
-        itemRealizarCompras.setText("Realizar Compra");
-        MenuFerramentas.add(itemRealizarCompras);
 
         jMenuBar1.add(MenuFerramentas);
 
@@ -159,10 +105,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_ItemCprodutoActionPerformed
 
-    private void BotaoSairTelaInternalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSairTelaInternalActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_BotaoSairTelaInternalActionPerformed
-
     private void itemReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReceitasActionPerformed
         TelaReceitas  tela = new TelaReceitas();
         tela.setVisible(true);
@@ -173,13 +115,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_itemSairtudoActionPerformed
 
-    private void itemTodosProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTodosProdutosActionPerformed
-       
-    }//GEN-LAST:event_itemTodosProdutosActionPerformed
-
-    private void itemProdutosDisponiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProdutosDisponiveisActionPerformed
-        
-    }//GEN-LAST:event_itemProdutosDisponiveisActionPerformed
+    private void vendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaActionPerformed
+        // TODO add your handling code here:
+        new RegistroVenda().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_vendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,23 +157,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoSairTelaInternal;
-    private javax.swing.JInternalFrame InternalTela;
     private javax.swing.JMenuItem ItemCproduto;
     private javax.swing.JMenu MenuCadastro;
-    private javax.swing.JMenu MenuEstoque;
     private javax.swing.JMenu MenuFerramentas;
-    private javax.swing.JRadioButtonMenuItem itemProdutosDisponiveis;
-    private javax.swing.JMenuItem itemRealizarCompras;
     private javax.swing.JMenuItem itemReceitas;
     private javax.swing.JMenuItem itemSairtudo;
-    private javax.swing.JRadioButtonMenuItem itemTodosProdutos;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTProdutos;
-    private javax.swing.JLabel labelFundoo;
     private javax.swing.JMenu menuSair;
+    private javax.swing.JMenuItem venda;
     // End of variables declaration//GEN-END:variables
 
 }

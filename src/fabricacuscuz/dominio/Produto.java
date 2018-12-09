@@ -12,12 +12,34 @@ import java.math.BigDecimal;
  * @author Beatriz
  */
 public class Produto {
+    private String funcionario;
     private int id;
     private String nome;
     private double preco;
     private String descricao;
     private int quantidade;
     private String categoria;
+    private String fornecedor;
+
+    public String getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(String funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    
+    
+    public String getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+    
+    
 
     public String getCategoria() {
         return categoria;

@@ -13,6 +13,7 @@ import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -27,42 +28,46 @@ public class TelaReceitas extends javax.swing.JFrame {
      */
     public TelaReceitas() {
         initComponents();
-         this.setExtendedState(MAXIMIZED_BOTH);
+        this.setExtendedState(MAXIMIZED_BOTH);
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowSorter(new TableRowSorter(dtm));
         readJTable();
 
     }
-    public void readJTable(){
+
+    public void readJTable() {
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setNumRows(0);
         ReceitaDAO dao = new ReceitaDAO();
-        
-        for(Receita receita : dao.read()){
+
+        for (Receita receita : dao.read()) {
             dtm.addRow(new Object[]{
+                receita.getId(),
                 receita.getNome(),
                 receita.getIngredientes(),
                 receita.getModopreparo()
-                    
+                
+
             });
-            
-            
+
         }
     }
-      public void readjTableForNome(String nome){
+
+    public void readjTableForNome(String nome) {
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setNumRows(0);
         ReceitaDAO dao = new ReceitaDAO();
-        
-        for(Receita receita : dao.readForNome(nome)){
+
+        for (Receita receita : dao.readForNome(nome)) {
             dtm.addRow(new Object[]{
+                receita.getId(),
                 receita.getNome(),
                 receita.getIngredientes(),
                 receita.getModopreparo()
-                    
+               
+
             });
-            
-            
+
         }
     }
 
@@ -86,6 +91,7 @@ public class TelaReceitas extends javax.swing.JFrame {
         registrar = new javax.swing.JButton();
         txtBusca = new javax.swing.JTextField();
         buscar = new javax.swing.JButton();
+        botaoExcluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,45 +127,45 @@ public class TelaReceitas extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "NOME", "INGREDIENTES", "MODO PREPARO"
+                "ID", "NOME", "INGREDIENTES", "MODO PREPARO"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        ));
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
             }
         });
         jScrollPane3.setViewportView(jTable1);
@@ -175,7 +181,7 @@ public class TelaReceitas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(registrar);
-        registrar.setBounds(1180, 410, 170, 60);
+        registrar.setBounds(1180, 400, 160, 60);
         getContentPane().add(txtBusca);
         txtBusca.setBounds(0, 230, 240, 40);
 
@@ -188,6 +194,16 @@ public class TelaReceitas extends javax.swing.JFrame {
         });
         getContentPane().add(buscar);
         buscar.setBounds(250, 230, 170, 45);
+
+        botaoExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoexluir.jpg"))); // NOI18N
+        botaoExcluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoExcluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botaoExcluir);
+        botaoExcluir.setBounds(1180, 510, 160, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/telareceitas_4.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -209,13 +225,13 @@ public class TelaReceitas extends javax.swing.JFrame {
         r.setNome(txtNome.getText());
         r.setIngredientes(textIngre.getText());
         r.setModopreparo(textModo.getText());
-        
+
         try {
             dao.salvar(r);
-             readJTable();
-             textIngre.setText("");
-             textModo.setText("");
-             txtNome.setText("");
+            readJTable();
+            textIngre.setText("");
+            textModo.setText("");
+            txtNome.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(TelaReceitas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -224,6 +240,41 @@ public class TelaReceitas extends javax.swing.JFrame {
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         readjTableForNome(txtBusca.getText());
     }//GEN-LAST:event_buscarActionPerformed
+
+    private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
+        if (jTable1.getSelectedRow() != -1) {
+
+            Receita r = new Receita();
+            ReceitaDAO dao = new ReceitaDAO();
+            r.setId((int) jTable1.getValueAt(jTable1.getSelectedRow(),0));
+
+            dao.apagar(r);
+            txtNome.setText("");
+            textIngre.setText("");
+            textModo.setText("");
+            readJTable();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
+        }
+
+
+    }//GEN-LAST:event_botaoExcluirActionPerformed
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+        // TODO add your handling code here:
+        if (jTable1.getSelectedRow() != -1) {
+
+            txtNome.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
+            textIngre.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+            textModo.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
+            
+        }
+    }//GEN-LAST:event_jTable1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -261,6 +312,7 @@ public class TelaReceitas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoSair;
     private javax.swing.JButton buscar;
     private javax.swing.JLabel jLabel1;

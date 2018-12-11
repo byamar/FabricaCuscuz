@@ -28,11 +28,11 @@ public class ReceitaDAO {
         
   
         try {
-            stm = con.prepareStatement("INSERT INTO `receita`(`nome`, `ingredientes`, `modo_preparo`) VALUES (?,?,?)");
-            
-            stm.setString(1, receita.getNome());
-            stm.setString(2,receita.getIngredientes());
-            stm.setString(3,receita.getModopreparo());
+            stm = con.prepareStatement("INSERT INTO `receita`(`ID`,`nome`, `ingredientes`, `modo_preparo`) VALUES (?,?,?,?)");
+            stm.setInt(1, receita.getId());
+            stm.setString(2, receita.getNome());
+            stm.setString(3,receita.getIngredientes());
+            stm.setString(4,receita.getModopreparo());
             stm.execute();
             
                     
@@ -62,6 +62,7 @@ public class ReceitaDAO {
           while(rs.next()){
               
               Receita r = new Receita();
+              r.setId(rs.getInt("ID"));
             r.setNome(rs.getString("nome"));
             r.setIngredientes(rs.getString("ingredientes"));
             r.setModopreparo(rs.getString("modo_preparo"));
@@ -117,4 +118,27 @@ public class ReceitaDAO {
    
     
     }
+         public void apagar (Receita receita){
+                Connection con = ConnectionFactory.getConexao();
+        PreparedStatement stm = null;
+        
+  
+        try {
+            stm = con.prepareStatement("DELETE FROM `receita` WHERE ID = ?");
+            
+            stm.setInt(1, receita.getId());
+            
+            
+            stm.executeUpdate();
+                    
+                  JOptionPane.showMessageDialog(null,"Excluído com sucesso.");
+                  
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "erro ao excluir: " +ex);
+                    }
+     
+
+        
+        
+     }
 }

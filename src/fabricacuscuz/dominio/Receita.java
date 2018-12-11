@@ -13,6 +13,17 @@ public class Receita {
     private String nome;
     private String ingredientes;
     private String modopreparo;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 
     public String getNome() {
         return nome;

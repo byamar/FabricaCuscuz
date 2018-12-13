@@ -19,7 +19,7 @@ public class Produto {
     private String descricao;
     private int quantidade;
     private String categoria;
-    private String fornecedor;
+    private String fabricante;
 
     
     public String getFuncionario() {
@@ -30,15 +30,17 @@ public class Produto {
         this.funcionario = funcionario;
     }
 
-    
-    
-    public String getFornecedor() {
-        return fornecedor;
+    public String getFabricante() {
+        return fabricante;
     }
 
-    public void setFornecedor(String fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
     }
+
+    
+    
+  
     
     
 

@@ -39,6 +39,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadastrarproduto = new javax.swing.JButton();
         sair = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -51,7 +52,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 botavendaActionPerformed(evt);
             }
         });
-        getContentPane().add(botavenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 170, 60));
+        getContentPane().add(botavenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, 170, 60));
 
         botaReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoregistrarreceita.jpg"))); // NOI18N
         botaReceita.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -60,7 +61,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 botaReceitaActionPerformed(evt);
             }
         });
-        getContentPane().add(botaReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, 170, 60));
+        getContentPane().add(botaReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 160, 170, 60));
 
         cadastrarproduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaocadastrarproduto.jpg"))); // NOI18N
         cadastrarproduto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -69,7 +70,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 cadastrarprodutoActionPerformed(evt);
             }
         });
-        getContentPane().add(cadastrarproduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 170, 60));
+        getContentPane().add(cadastrarproduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 170, 60));
 
         sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/icon (1).png"))); // NOI18N
         sair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -80,8 +81,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 30, 40, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/telaprincipal_2.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/telaprincipal_3.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 770));
+
+        jButton1.setText("jButton1");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -150,6 +154,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaReceita;
     private javax.swing.JButton botavenda;
     private javax.swing.JButton cadastrarproduto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton sair;
     // End of variables declaration//GEN-END:variables

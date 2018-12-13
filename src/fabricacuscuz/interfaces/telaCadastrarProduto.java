@@ -45,7 +45,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
                 produto.getPreco(),
                 produto.getQuantidade(),
                 produto.getCategoria(),
-                produto.getFornecedor()
+                produto.getFabricante()
 
             });
 
@@ -65,7 +65,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
                 produto.getPreco(),
                 produto.getQuantidade(),
                 produto.getCategoria(),
-                produto.getFornecedor()
+                produto.getFabricante()
 
             });
 
@@ -94,7 +94,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoExcluir = new javax.swing.JButton();
         botaoAtualizar = new javax.swing.JButton();
         txtCategoria = new javax.swing.JTextField();
-        txtFornecedor = new javax.swing.JTextField();
+        txtFabricante = new javax.swing.JTextField();
         txtBusca = new javax.swing.JTextField();
         botaoBuscar = new javax.swing.JButton();
         fundo = new javax.swing.JLabel();
@@ -255,8 +255,8 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoAtualizar.setBounds(1140, 430, 170, 40);
         getContentPane().add(txtCategoria);
         txtCategoria.setBounds(180, 180, 170, 30);
-        getContentPane().add(txtFornecedor);
-        txtFornecedor.setBounds(520, 180, 320, 30);
+        getContentPane().add(txtFabricante);
+        txtFabricante.setBounds(520, 180, 320, 30);
 
         txtBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,7 +278,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoBuscar.setBounds(1100, 210, 150, 40);
 
         fundo.setForeground(new java.awt.Color(255, 255, 255));
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto_1.jpg"))); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto_2.jpg"))); // NOI18N
         fundo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(fundo);
         fundo.setBounds(0, -30, 1430, 800);
@@ -315,7 +315,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         p.setPreco(Double.parseDouble(txtPreco.getText()));
         p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
         p.setCategoria(txtCategoria.getText());
-        p.setFornecedor(txtFornecedor.getText());
+        p.setFabricante(txtFabricante.getText());
 
         try {
             dao.salvar(p);
@@ -325,7 +325,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             txtPreco.setText("");
             txtQuantidade.setText("");
             txtCategoria.setText("");
-            txtFornecedor.setText("");
+            txtFabricante.setText("");
 
         } catch (SQLException ex) {
             Logger.getLogger(telaCadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
@@ -368,7 +368,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             txtPreco.setText("");
             txtQuantidade.setText("");
             txtCategoria.setText("");
-            txtFornecedor.setText("");
+            txtFabricante.setText("");
             readJTable();
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
@@ -380,7 +380,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
 if (jTable1.getSelectedRow() != -1) {
 
             if (txtFuncionario.getText().equals("") || txtDescricao.getText().equals("") || txtPreco.getText().equals("")
-                    || txtQuantidade.getText().equals("") || txtCategoria.getText().equals("") || txtFornecedor.getText().equals("")) {
+                    || txtQuantidade.getText().equals("") || txtCategoria.getText().equals("") || txtFabricante.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Por favor, preencha os campos");
             }
          else {
@@ -391,7 +391,7 @@ if (jTable1.getSelectedRow() != -1) {
             p.setPreco(Double.parseDouble(txtPreco.getText()));
             p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
             p.setCategoria(txtCategoria.getText());
-            p.setFornecedor(txtFornecedor.getText());
+            p.setFabricante(txtFabricante.getText());
             p.setId((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
             dao.alterar(p);
 
@@ -400,7 +400,7 @@ if (jTable1.getSelectedRow() != -1) {
             txtPreco.setText("");
             txtQuantidade.setText("");
             txtCategoria.setText("");
-            txtFornecedor.setText("");
+            txtFabricante.setText("");
             readJTable();
         }
 }
@@ -415,7 +415,7 @@ if (jTable1.getSelectedRow() != -1) {
             txtPreco.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
             txtQuantidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
             txtCategoria.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString());
-            txtFornecedor.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
+            txtFabricante.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
             
 
         }
@@ -480,7 +480,7 @@ if (jTable1.getSelectedRow() != -1) {
     private javax.swing.JTextField txtBusca;
     private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtDescricao;
-    private javax.swing.JTextField txtFornecedor;
+    private javax.swing.JTextField txtFabricante;
     private javax.swing.JTextField txtFuncionario;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQuantidade;

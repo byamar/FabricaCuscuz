@@ -76,6 +76,7 @@ public class RegistroVenda extends javax.swing.JFrame {
         botaoRegistrar = new javax.swing.JButton();
         txtDataVenda = new javax.swing.JTextField();
         botaoVoltar = new javax.swing.JButton();
+        excluir = new javax.swing.JButton();
         labelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -141,7 +142,7 @@ public class RegistroVenda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoRegistrar);
-        botaoRegistrar.setBounds(1150, 280, 170, 40);
+        botaoRegistrar.setBounds(1150, 350, 170, 40);
         getContentPane().add(txtDataVenda);
         txtDataVenda.setBounds(950, 130, 160, 30);
 
@@ -154,6 +155,11 @@ public class RegistroVenda extends javax.swing.JFrame {
         });
         getContentPane().add(botaoVoltar);
         botaoVoltar.setBounds(1290, 30, 40, 40);
+
+        excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoexluir.jpg"))); // NOI18N
+        excluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(excluir);
+        excluir.setBounds(1150, 280, 175, 40);
 
         labelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/registrodevenda_3.jpg"))); // NOI18N
         getContentPane().add(labelFundo);
@@ -170,7 +176,6 @@ public class RegistroVenda extends javax.swing.JFrame {
 
         itemSaida item = new itemSaida();
         ProdutoDAO dao = new ProdutoDAO();
-        
        
        
         item.setVendedor(txtVendedor.getText());
@@ -251,6 +256,7 @@ public class RegistroVenda extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoRegistrar;
     private javax.swing.JButton botaoVoltar;
+    private javax.swing.JButton excluir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelFundo;

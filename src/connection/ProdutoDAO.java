@@ -34,14 +34,14 @@ public class ProdutoDAO extends GeralDAO{
         
   
         try {
-            stm = con.prepareStatement("INSERT INTO `produto`( `funcionario`, `Descricao`, `preco`, `quantidade`, `categoria`, `fornecedor`) VALUES (?,?,?,?,?,?)");
+            stm = con.prepareStatement("INSERT INTO `produto`( `funcionario`, `Descricao`, `preco`, `quantidade`, `categoria`, `fabricante`) VALUES (?,?,?,?,?,?)");
             
             stm.setString(1, produto.getFuncionario());
             stm.setString(2,produto.getDescricao());     
             stm.setDouble(3, produto.getPreco());
             stm.setInt(4, produto.getQuantidade());
             stm.setString(5, produto.getCategoria());
-            stm.setString(6, produto.getFornecedor());
+            stm.setString(6, produto.getFabricante());
             stm.execute();
                     
                   JOptionPane.showMessageDialog(null,"Salvo com sucesso");
@@ -60,14 +60,14 @@ public class ProdutoDAO extends GeralDAO{
         
   
         try {
-            stm = con.prepareStatement("UPDATE `produto` SET `funcionario`= ?,`Descricao`= ?,`preco`= ?,`quantidade`= ?,`categoria`= ?,`fornecedor`= ? WHERE ID = ?");
+            stm = con.prepareStatement("UPDATE `produto` SET `funcionario`= ?,`Descricao`= ?,`preco`= ?,`quantidade`= ?,`categoria`= ?,`fabricante`= ? WHERE ID = ?");
             
             stm.setString(1, produto.getFuncionario());
             stm.setString(2,produto.getDescricao());     
             stm.setDouble(3, produto.getPreco());
              stm.setInt(4,produto.getQuantidade());
              stm.setString(5,produto.getCategoria());
-             stm.setString(6, produto.getFornecedor());
+             stm.setString(6, produto.getFabricante());
             stm.setInt(7, produto.getId());
             stm.executeUpdate();
                     
@@ -101,7 +101,7 @@ public class ProdutoDAO extends GeralDAO{
               p.setPreco(rs.getDouble("preco"));
               p.setQuantidade(rs.getInt("quantidade"));
               p.setCategoria(rs.getString("categoria"));
-              p.setFornecedor(rs.getString("fornecedor"));
+              p.setFabricante(rs.getString("fabricante"));
               produtos.add(p);
               
           }
@@ -165,7 +165,7 @@ public class ProdutoDAO extends GeralDAO{
               p.setPreco(rs.getDouble("preco"));
               p.setQuantidade(rs.getInt("quantidade"));
               p.setCategoria(rs.getString("categoria"));
-              p.setFornecedor(rs.getString("fornecedor"));
+              p.setFabricante(rs.getString("fabricante"));
               produtos.add(p);
               
           }

@@ -21,6 +21,7 @@ public class Produto {
     private String categoria;
     private String fornecedor;
 
+    
     public String getFuncionario() {
         return funcionario;
     }

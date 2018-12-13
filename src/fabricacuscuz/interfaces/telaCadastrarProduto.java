@@ -377,13 +377,13 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
-        if (jTable1.getSelectedRow() != -1) {
+if (jTable1.getSelectedRow() != -1) {
 
             if (txtFuncionario.getText().equals("") || txtDescricao.getText().equals("") || txtPreco.getText().equals("")
                     || txtQuantidade.getText().equals("") || txtCategoria.getText().equals("") || txtFornecedor.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Por favor, preencha os campos");
             }
-        } else {
+         else {
             Produto p = new Produto();
             ProdutoDAO dao = new ProdutoDAO();
             p.setFuncionario(txtFuncionario.getText());
@@ -403,8 +403,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             txtFornecedor.setText("");
             readJTable();
         }
-
-
+}
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
     private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
@@ -417,6 +416,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             txtQuantidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
             txtCategoria.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString());
             txtFornecedor.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
+            
 
         }
     }//GEN-LAST:event_jTable1KeyReleased

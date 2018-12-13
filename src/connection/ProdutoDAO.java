@@ -55,33 +55,28 @@ public class ProdutoDAO extends GeralDAO{
         
     }
      public void alterar (Produto produto){
-                Connection con = ConnectionFactory.getConexao();
+             Connection con = ConnectionFactory.getConexao();
         PreparedStatement stm = null;
         
   
         try {
-            stm = con.prepareStatement("UPDATE `produto` SET `funcionario`= ?,`Descricao`= ?,`preco`= ?,`quantidade`= ?,`categoria`= ?,`fornecedor`= ?  WHERE ID = ?");
+            stm = con.prepareStatement("UPDATE `produto` SET `funcionario`= ?,`Descricao`= ?,`preco`= ?,`quantidade`= ?,`categoria`= ?,`fornecedor`= ? WHERE ID = ?");
             
             stm.setString(1, produto.getFuncionario());
-            stm.setString(2,produto.getDescricao());
+            stm.setString(2,produto.getDescricao());     
             stm.setDouble(3, produto.getPreco());
-            stm.setInt(4, produto.getQuantidade());
-            stm.setString(5, produto.getCategoria());
-            stm.setString(6, produto.getFornecedor());
+             stm.setInt(4,produto.getQuantidade());
+             stm.setString(5,produto.getCategoria());
+             stm.setString(6, produto.getFornecedor());
             stm.setInt(7, produto.getId());
-            
-            
             stm.executeUpdate();
                     
-                  JOptionPane.showMessageDialog(null,"Alterado com sucesso");
+                  JOptionPane.showMessageDialog(null,"Atualizado com sucesso");
                   
                     } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, "erro ao alterar: " +ex);
+                        JOptionPane.showMessageDialog(null, "erro ao atualizar: "+ex);
                     }
      
-
-        
-        
      }
     
    public List<Produto> read(){

@@ -76,24 +76,26 @@ public class compra extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         REGISTRAR = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().add(txtFuncionario);
-        txtFuncionario.setBounds(180, 160, 110, 30);
+        txtFuncionario.setBounds(220, 140, 100, 30);
         getContentPane().add(txtDescricao);
-        txtDescricao.setBounds(410, 160, 150, 30);
+        txtDescricao.setBounds(490, 140, 190, 30);
         getContentPane().add(txtQuantidade);
-        txtQuantidade.setBounds(750, 160, 150, 30);
+        txtQuantidade.setBounds(870, 140, 190, 30);
         getContentPane().add(txtPreco);
-        txtPreco.setBounds(980, 160, 150, 30);
+        txtPreco.setBounds(1180, 140, 150, 30);
         getContentPane().add(txtCategoria);
-        txtCategoria.setBounds(160, 200, 160, 30);
+        txtCategoria.setBounds(190, 210, 150, 30);
         getContentPane().add(txtFornecedor);
-        txtFornecedor.setBounds(470, 200, 390, 30);
+        txtFornecedor.setBounds(520, 210, 380, 30);
         getContentPane().add(txtData);
-        txtData.setBounds(1020, 200, 160, 30);
+        txtData.setBounds(1100, 210, 160, 30);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,7 +107,15 @@ public class compra extends javax.swing.JFrame {
             new String [] {
                 "ID", "FUNCIONÁRIO", "DESCRIÇÃO", "QUANTIDADE", "PREÇO", "CATEGORIA", "FORNECEDOR", "DATA COMPRA"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTable1KeyReleased(evt);
@@ -136,7 +146,17 @@ public class compra extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(1150, 330, 170, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/registrocompra_2.jpg"))); // NOI18N
+        voltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/left-pointing-arrow.png"))); // NOI18N
+        voltar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar);
+        voltar.setBounds(1240, 30, 39, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/tabela registo venda att.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1369, 768);
 
@@ -170,6 +190,7 @@ public class compra extends javax.swing.JFrame {
             txtCategoria.setText("");
             txtData.setText("");
             txtFornecedor.setText("");
+            txtDescricao.setText("");
             
            
         } catch (SQLException ex) {
@@ -206,13 +227,19 @@ public class compra extends javax.swing.JFrame {
 
             txtFuncionario.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
             txtDescricao.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
-            txtPreco.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
-            txtQuantidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
+            txtPreco.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
+            txtQuantidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
             txtCategoria.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString());
             txtFornecedor.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
             txtData.setText(jTable1.getValueAt(jTable1.getSelectedRow(),7).toString());
          }
     }//GEN-LAST:event_jTable1KeyReleased
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        // TODO add your handling code here:
+        new TelaPrincipal().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,5 +290,6 @@ public class compra extends javax.swing.JFrame {
     private javax.swing.JTextField txtFuncionario;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQuantidade;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

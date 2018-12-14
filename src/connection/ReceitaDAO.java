@@ -101,6 +101,7 @@ public class ReceitaDAO {
               
            Receita r = new Receita();
            r.setNome(rs.getString("nome"));
+           r.setId(rs.getInt("id"));
            r.setIngredientes(rs.getString("ingredientes"));
            r.setModopreparo(rs.getString("modo_preparo"));
               receitas.add(r);

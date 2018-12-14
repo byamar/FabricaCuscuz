@@ -187,9 +187,10 @@ public class ProdutoDAO extends GeralDAO{
         
   
         try {
-            stm = con.prepareStatement("INSERT INTO `registro_venda`(`id`,`vendedor`, `quantidade`, `preco`, `distribuidora`, `data_validade`, `data_venda`, `prazo_entrega`) VALUES (?,?,?,?,?,?,?,?)");
-            stm.setInt(1, item.getId());
-            stm.setString(2, item.getVendedor());
+            stm = con.prepareStatement("INSERT INTO `registro_venda`(`vendedor`, `descricao`,`quantidade`, `preco`, `distribuidora`, `data_validade`, `data_venda`, `prazo_entrega`) VALUES (?,?,?,?,?,?,?,?)");
+           
+            stm.setString(1, item.getVendedor());
+            stm.setString(2, item.getDescricao());
             stm.setInt(3,item.getQuantidade());     
             stm.setDouble(4, item.getPreco());
             stm.setString(5, item.getDistribuidora());
@@ -226,6 +227,8 @@ public class ProdutoDAO extends GeralDAO{
           while(rs.next()){
               
               itemSaida i = new itemSaida();
+               i.setId(rs.getInt("id"));
+              i.setDescricao(rs.getString("descricao"));
               i.setVendedor(rs.getString("vendedor"));
              i.setDataEntrega(rs.getDate("prazo_entrega"));
               i.setDataValidade(rs.getDate("data_validade"));
@@ -276,5 +279,27 @@ public class ProdutoDAO extends GeralDAO{
         
         
     }
+      public void apagarItem (itemSaida item){
+                Connection con = ConnectionFactory.getConexao();
+        PreparedStatement stm = null;
+        
+  
+        try {
+            stm = con.prepareStatement("DELETE FROM `registro_venda` WHERE  id = ?");
+            
+            stm.setInt(1, item.getId());
+            stm.executeUpdate();
+                    
+                  JOptionPane.showMessageDialog(null,"Excluído com sucesso.");
+                  
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "erro ao excluir: " +ex);
+                    }
+     
+
+        
+        
+     }
+
      
 } 

@@ -14,13 +14,23 @@ import java.util.Date;
 public class itemSaida {
     private int id;
     private String vendedor;
+    private String descricao;
     private int quantidade;
     private double preco;
     private Date dataVenda;
     private Date dataValidade;
     private Date dataEntrega;
     
+    
     private String distribuidora;
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
     public int getId() {
         return id;
@@ -29,6 +39,10 @@ public class itemSaida {
     public void setId(int id) {
         this.id = id;
     }
+    
+    
+
+ 
 
     
     

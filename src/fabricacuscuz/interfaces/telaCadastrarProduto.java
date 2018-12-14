@@ -147,7 +147,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoCadastrarP);
-        botaoCadastrarP.setBounds(1140, 510, 160, 40);
+        botaoCadastrarP.setBounds(1130, 440, 160, 40);
 
         botaoSairTelaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/left-pointing-arrow.png"))); // NOI18N
         botaoSairTelaC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -212,7 +212,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "FUNCIONARIO", "DESCRIÇÃO", "PREÇO", "QUANTIDADE", "CATEGORIA", "FORNECEDOR"
+                "ID", "FUNCIONARIO", "DESCRIÇÃO", "PREÇO", "QUANTIDADE", "CATEGORIA", "FABRICANTE"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -242,7 +242,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoExcluir);
-        botaoExcluir.setBounds(1140, 340, 170, 40);
+        botaoExcluir.setBounds(1130, 300, 170, 40);
 
         botaoAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoatualizar_1.jpg"))); // NOI18N
         botaoAtualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -252,7 +252,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoAtualizar);
-        botaoAtualizar.setBounds(1140, 430, 170, 40);
+        botaoAtualizar.setBounds(1130, 370, 170, 40);
         getContentPane().add(txtCategoria);
         txtCategoria.setBounds(180, 180, 170, 30);
         getContentPane().add(txtFabricante);
@@ -278,7 +278,7 @@ public class telaCadastrarProduto extends javax.swing.JFrame {
         botaoBuscar.setBounds(1100, 210, 150, 40);
 
         fundo.setForeground(new java.awt.Color(255, 255, 255));
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto_2.jpg"))); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/cadastroproduto_3.jpg"))); // NOI18N
         fundo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(fundo);
         fundo.setBounds(0, -30, 1430, 800);

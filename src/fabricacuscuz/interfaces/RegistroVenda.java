@@ -5,14 +5,17 @@
  */
 package fabricacuscuz.interfaces;
 
+import connection.ItemCompraDAO;
 import connection.ProdutoDAO;
 import fabricacuscuz.dominio.Produto;
+import fabricacuscuz.dominio.itemCompra;
 import fabricacuscuz.dominio.itemSaida;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -41,14 +44,17 @@ public class RegistroVenda extends javax.swing.JFrame {
         
         for(itemSaida item : dao.readVenda()){
             dtm.addRow(new Object[]{
-                item.getVendedor(),
                 item.getId(),
+                item.getVendedor(),
+                item.getDescricao(),
                 item.getQuantidade(),
                 item.getPreco(),
                 item.getDataVenda(),
                 item.getDataValidade(),
                 item.getDataEntrega(),
-                item.getDistribuidora()
+                item.getDistribuidora(),
+                
+                    
                     
             });
             
@@ -77,12 +83,14 @@ public class RegistroVenda extends javax.swing.JFrame {
         txtDataVenda = new javax.swing.JTextField();
         botaoVoltar = new javax.swing.JButton();
         excluir = new javax.swing.JButton();
+        txtDescricao = new javax.swing.JTextField();
         labelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().add(txtVendedor);
-        txtVendedor.setBounds(140, 130, 190, 30);
+        txtVendedor.setBounds(140, 140, 190, 30);
 
         txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,13 +98,13 @@ public class RegistroVenda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtQuantidade);
-        txtQuantidade.setBounds(500, 130, 110, 30);
+        txtQuantidade.setBounds(950, 140, 110, 30);
         getContentPane().add(txtPreco);
-        txtPreco.setBounds(700, 130, 90, 30);
+        txtPreco.setBounds(1160, 140, 130, 30);
         getContentPane().add(txtDataValidade);
-        txtDataValidade.setBounds(180, 170, 160, 30);
+        txtDataValidade.setBounds(570, 180, 190, 30);
         getContentPane().add(txtDataEntreg);
-        txtDataEntreg.setBounds(520, 170, 160, 30);
+        txtDataEntreg.setBounds(980, 180, 160, 30);
 
         txtDistribuidora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,35 +112,48 @@ public class RegistroVenda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtDistribuidora);
-        txtDistribuidora.setBounds(860, 170, 360, 30);
+        txtDistribuidora.setBounds(190, 210, 360, 30);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "VENDEDOR", "PRODUTO ID", "QUANTIDADE", "PREÇO", "DATA VALIDADE", "DATA ENTREGA", "DISTRIBUIDORA"
+                "ID", "VENDEDOR", "DESCRIÇÃO", "QUANTIDADE", "PREÇO", "DATA VENDA", "DATA VALIDADE", "DATA ENTREGA", "DISTRIBUIDORA"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 240, 1090, 540);
+        jScrollPane1.setBounds(0, 260, 1120, 540);
 
         botaoRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/registrar.jpg"))); // NOI18N
         botaoRegistrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -144,7 +165,7 @@ public class RegistroVenda extends javax.swing.JFrame {
         getContentPane().add(botaoRegistrar);
         botaoRegistrar.setBounds(1150, 350, 170, 40);
         getContentPane().add(txtDataVenda);
-        txtDataVenda.setBounds(950, 130, 160, 30);
+        txtDataVenda.setBounds(150, 180, 190, 30);
 
         botaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/left-pointing-arrow.png"))); // NOI18N
         botaoVoltar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -158,10 +179,17 @@ public class RegistroVenda extends javax.swing.JFrame {
 
         excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/botaoexluir.jpg"))); // NOI18N
         excluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(excluir);
         excluir.setBounds(1150, 280, 175, 40);
+        getContentPane().add(txtDescricao);
+        txtDescricao.setBounds(480, 140, 320, 30);
 
-        labelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/registrodevenda_3.jpg"))); // NOI18N
+        labelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fabricacuscuz/imagens/registrodevenda_6.jpg"))); // NOI18N
         getContentPane().add(labelFundo);
         labelFundo.setBounds(-1, 0, 1370, 768);
 
@@ -179,6 +207,7 @@ public class RegistroVenda extends javax.swing.JFrame {
        
        
         item.setVendedor(txtVendedor.getText());
+        item.setDescricao(txtDescricao.getText());
         item.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
         item.setPreco(Double.parseDouble(txtPreco.getText()));
         item.setDataEntrega(item.StringParaDate(txtDataEntreg.getText()));
@@ -199,6 +228,8 @@ public class RegistroVenda extends javax.swing.JFrame {
             txtDataVenda.setText("");
             txtDataEntreg.setText("");
             txtDataValidade.setText("");
+            txtDescricao.setText("");
+            txtDistribuidora.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(RegistroVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -217,6 +248,48 @@ public class RegistroVenda extends javax.swing.JFrame {
         new TelaPrincipal().setVisible(true);
         dispose();
     }//GEN-LAST:event_botaoVoltarActionPerformed
+
+    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
+                if (jTable1.getSelectedRow() != -1) {
+
+            itemSaida i = new itemSaida();
+            ProdutoDAO dao = new ProdutoDAO();
+
+            i.setId((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+            dao.apagarItem(i);
+  readJTable();
+            txtVendedor.setText("");
+            txtDescricao.setText("");
+            txtPreco.setText("");
+            txtQuantidade.setText("");
+            txtDataVenda.setText("");
+            txtDistribuidora.setText("");
+            txtDataEntreg.setText("");
+            txtDataValidade.setText("");
+                         readJTable();
+
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
+        }
+    }//GEN-LAST:event_excluirActionPerformed
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+        // TODO add your handling code here:
+         if (jTable1.getSelectedRow() != -1) {
+
+            txtVendedor.setText(jTable1.getValueAt(jTable1.getSelectedRow(),1).toString());
+            txtDescricao.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+            txtPreco.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
+            txtQuantidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
+            txtDataVenda.setText(jTable1.getValueAt(jTable1.getSelectedRow(),5).toString());
+            txtDataValidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(),6).toString());
+            txtDataEntreg.setText(jTable1.getValueAt(jTable1.getSelectedRow(),7).toString());
+         txtDistribuidora.setText(jTable1.getValueAt(jTable1.getSelectedRow(),8).toString());
+            
+
+        }
+    }//GEN-LAST:event_jTable1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -263,6 +336,7 @@ public class RegistroVenda extends javax.swing.JFrame {
     private javax.swing.JTextField txtDataEntreg;
     private javax.swing.JTextField txtDataValidade;
     private javax.swing.JTextField txtDataVenda;
+    private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtDistribuidora;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQuantidade;

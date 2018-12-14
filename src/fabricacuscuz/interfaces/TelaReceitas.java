@@ -54,17 +54,15 @@ public class TelaReceitas extends javax.swing.JFrame {
     }
 
     public void readjTableForNome(String nome) {
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+      DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setNumRows(0);
         ReceitaDAO dao = new ReceitaDAO();
 
         for (Receita receita : dao.readForNome(nome)) {
             dtm.addRow(new Object[]{
-                receita.getId(),
-                receita.getNome(),
+             receita.getId(),
                 receita.getIngredientes(),
                 receita.getModopreparo()
-               
 
             });
 
@@ -159,7 +157,15 @@ public class TelaReceitas extends javax.swing.JFrame {
             new String [] {
                 "ID", "NOME", "INGREDIENTES", "MODO PREPARO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTable1KeyPressed(evt);
@@ -239,6 +245,7 @@ public class TelaReceitas extends javax.swing.JFrame {
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         readjTableForNome(txtBusca.getText());
+        
     }//GEN-LAST:event_buscarActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed

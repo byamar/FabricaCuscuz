@@ -163,7 +163,7 @@ public class RegistroVenda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoRegistrar);
-        botaoRegistrar.setBounds(1150, 350, 170, 40);
+        botaoRegistrar.setBounds(1150, 360, 170, 40);
         getContentPane().add(txtDataVenda);
         txtDataVenda.setBounds(150, 180, 190, 30);
 
